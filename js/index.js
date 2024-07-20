@@ -1,4 +1,4 @@
-import { Car } from "./js/Car.js"; 
+import { Car } from "./Car.js"; 
 
 const audi = new Car ('Audi', '80', 'Geltona', 66, 5.2);
 console.log(audi);

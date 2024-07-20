@@ -1,38 +1,39 @@
 export class Car {
-    constructor(pavadinimas, modelis, spalva) {
+    constructor(pavadinimas, modelis, spalva, kuroBakoTalpa, vidKuroSanaudos) {
         this.name = pavadinimas;
         this.model = modelis;
         this.color = spalva;
-        this.fuelTankCapacityLitres = 66;
-        this.averageFuelConsumptionLitres = 5.2;
+        this.fuelTankCapacityLitres = kuroBakoTalpa;
+        this.averageFuelConsumptionLitres = vidKuroSanaudos;
         this.engineIsOn = false; 
         this.speed = 0;
-        /*this.fuelLeft = kuroLikutis; */
+        this.fuelLeft = kuroBakoTalpa; 
     }
 
 
     ijungtiVarikli() {
-        if(this.engineIsOn === true) {
-            return 'Įjungto variklio negalima įjungti dar kartą, sugadinsite starterį!';
-        } 
-        this.engineIsOn === true; 
+        if(this.engineIsOn !== false) {
             return 'Variklis yra įjungtas.'
+        } else {
+            return 'Įjungto variklio negalima įjungti dar kartą, sugadinsite starterį!';
+        }
     }
 
     isjungtiVarikli () {
         if (this.engineIsOn === false) {
             return 'Variklis yra išjungtas, dar kartą to padaryti negalima.';
-        } 
-        this.engineIsOn === false;
+        } else {
             return 'Variklis yra išjungtas.'
+        }
     }
 
     pradetiVaziuoti() {
         if (this.engineIsOn !== false) {
             return 'Pradėti važiuoti negalime, kol variklis yra neįjungtas.';
-        }
-        this.speed = 20;
+        } else {
+            this.speed = 20;
             return `Automobilis juda ${this.speed}km/h. Kuro sąnaudos yra ${this.averageFuelConsumptionLitres * 2}l/100km.`;
+        } 
     }
     
     vaziuoti() {
@@ -44,8 +45,9 @@ export class Car {
     }
 
     sustoti() {
-        this.speed = 0;
+        if(this.speed === 0) {
         return `Automobilis sustojo, nes jo greitis yra ${this.speed}km/h.`;
+        }
     }
 
     likesKuras() {
@@ -59,9 +61,6 @@ export class Car {
             return `Automobilio variklis išjungtas, galime saugiai pildyti kuro baką.`;
         }
         
-
-        
-
     }
 
 
